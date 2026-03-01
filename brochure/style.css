@@ -1,0 +1,578 @@
+:root {
+    --color-primary: #00A8B5;
+    /* Teal */
+    --color-secondary: #4CAF50;
+    /* Emerald */
+    --color-tertiary: #8BC34A;
+    /* Lime */
+    --color-dark: #1A292C;
+    --color-text: #2D3748;
+    --color-text-light: #718096;
+    --color-light: #F4F7F6;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --grad-main: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #CBD5E1;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    padding: 40px;
+}
+
+.brochure-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Page Standard Size (Letter aspect ratio roughly, viewing in spread) */
+.page {
+    background: #fff;
+    aspect-ratio: 1 / 1.414;
+    /* A4 aspect ratio approximation */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Simulate Book Spine */
+.page:nth-child(odd) {
+    box-shadow: inset -25px 0 50px rgba(0, 0, 0, 0.15);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.page:nth-child(even) {
+    box-shadow: inset 25px 0 50px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+}
+
+h2 span,
+h1 span {
+    color: var(--color-primary);
+}
+
+.divider {
+    height: 4px;
+    width: 60px;
+    background: var(--color-tertiary);
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+.divider.light {
+    background: var(--color-primary);
+}
+
+/* --- Page 1: Cover --- */
+.cover-page {
+    background: url('../imagenes/imagen1.jpg') center/cover;
+    color: white;
+    justify-content: center;
+    padding: 50px;
+}
+
+.cover-page .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(26, 41, 44, 0.9) 100%);
+    z-index: 1;
+}
+
+.cover-page .content {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+    margin-bottom: 80px;
+}
+
+.logo-img-large {
+    height: 120px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.cover-page .title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.cover-page .title span {
+    color: var(--color-tertiary);
+}
+
+.cover-page .subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.leaf-decor {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    font-size: 8rem;
+    color: white;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+/* --- Interior Pages (2 & 3) --- */
+.text-page {
+    padding: 60px;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url('../imagenes/imagen 2.jpg') center/cover;
+}
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.page-body .lead {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.page-body p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--color-text-light);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.box {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 4px solid var(--color-secondary);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.box-icon {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.box h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.box p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.page-footer {
+    margin-top: auto;
+    text-align: right;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    opacity: 0.3;
+}
+
+/* --- Dark Page (3) --- */
+.dark-page {
+    background: linear-gradient(rgba(26, 41, 44, 0.9), rgba(26, 41, 44, 0.95)), url('../imagenes/imagen 3.jpg') center/cover;
+    color: white;
+}
+
+.dark-page h2 span {
+    color: var(--color-tertiary);
+}
+
+.services-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.services-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 18px 25px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.services-list li:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.services-list i {
+    font-size: 1.5rem;
+    color: var(--color-tertiary);
+    margin-top: 4px;
+}
+
+.services-list strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.services-list span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.objectives-highlight {
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.objectives-highlight h3 {
+    margin-bottom: 20px;
+    color: var(--color-tertiary);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background: var(--color-primary);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* --- Page 4: Back Cover --- */
+.back-cover {
+    background: linear-gradient(rgba(0, 168, 181, 0.85), rgba(0, 168, 181, 0.95)), url('../imagenes/imagen4.jpg') center/cover;
+    color: white;
+    padding: 60px;
+    justify-content: center;
+    text-align: center;
+}
+
+.back-cover .content {
+    position: relative;
+    z-index: 2;
+}
+
+.logo-img-medium {
+    height: 80px;
+    width: auto;
+    margin-bottom: 40px;
+}
+
+.back-cover h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.back-cover h2 span {
+    color: var(--color-dark);
+}
+
+.contact-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--color-text);
+    padding: 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto 50px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 35px 60px rgba(0, 0, 0, 0.35);
+}
+
+.c-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
+    cursor: default;
+}
+
+.c-item:hover {
+    color: var(--color-primary);
+    transform: translateX(5px);
+}
+
+.c-item i {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+
+.legal-info {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.circle-decor {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    opacity: 0.1;
+    bottom: -200px;
+    left: -200px;
+    z-index: 1;
+}
+
+/* Responsive for single column viewing */
+@media (max-width: 1200px) {
+    .brochure-container {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+        box-shadow: none;
+        gap: 40px;
+        background: transparent;
+    }
+
+    .page {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
+        border-radius: 12px;
+        border-right: none !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .page {
+        aspect-ratio: auto;
+        min-height: 800px;
+    }
+
+    .cover-page .title {
+        font-size: 2.5rem;
+    }
+
+    .logo-img-large {
+        height: 80px;
+    }
+}
+
+/* --- Entrance Animations --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page .content,
+.page .page-header,
+.page .page-body p,
+.page .box,
+.services-list li,
+.objectives-highlight,
+.contact-box {
+    animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    opacity: 0;
+}
+
+/* Delay staggered */
+.cover-page .content {
+    animation-delay: 0.2s;
+}
+
+.page-header {
+    animation-delay: 0.3s;
+}
+
+.page-body>p {
+    animation-delay: 0.4s;
+}
+
+.grid-2 .box:first-child {
+    animation-delay: 0.5s;
+}
+
+.grid-2 .box:last-child {
+    animation-delay: 0.7s;
+}
+
+.services-list li:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.services-list li:nth-child(2) {
+    animation-delay: 0.55s;
+}
+
+.services-list li:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+.services-list li:nth-child(4) {
+    animation-delay: 0.85s;
+}
+
+.objectives-highlight {
+    animation-delay: 1s;
+}
+
+.contact-box {
+    animation-delay: 0.5s;
+}
+
+/* --- Print / PDF Export Styles --- */
+@media print {
+    body {
+        background-color: transparent !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Force WebKit (Chrome/Edge/Safari) to render background colors/images */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .brochure-container {
+        display: block;
+        /* Remove grid for sequential printing */
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none !important;
+        border-radius: 0;
+    }
+
+    .page {
+        box-shadow: none !important;
+        border: none !important;
+        page-break-after: always;
+        /* Force new page for each brochure page */
+        page-break-inside: avoid;
+        width: 100%;
+        /* Take full width of printed page */
+        height: 100vh;
+        /* Attempt to fill the page height */
+        border-radius: 0 !important;
+        /* Remove entrance animations for printing */
+        animation: none !important;
+        opacity: 1 !important;
+    }
+
+    .page .content,
+    .page .page-header,
+    .page .page-body p,
+    .page .box,
+    .services-list li,
+    .objectives-highlight,
+    .contact-box {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+
+    /* Remove interactive hover states & glassmorphism for print clarity */
+    .box,
+    .services-list li,
+    .contact-box,
+    .objectives-highlight {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
+    /* Reset page margins to zero on the printer side */
+    @page {
+        margin: 0;
+        size: letter portrait;
+        /* Or A4 */
+    }
+}

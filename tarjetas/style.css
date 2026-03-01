@@ -1,0 +1,295 @@
+:root {
+    --color-primary: #00A8B5;
+    /* Teal */
+    --color-secondary: #4CAF50;
+    /* Emerald */
+    --color-tertiary: #8BC34A;
+    /* Lime */
+    --color-dark: #1A292C;
+    --color-text: #2D3748;
+    --color-light: #FCFCFC;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --grad-main: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E2E8F0;
+    font-family: var(--font-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+/* Card base - standard business card size 3.5 x 2 inches */
+/* Using pixels at roughly 300dpi scale down for web viewing */
+.card {
+    width: 600px;
+    height: 343px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- Frente de la Tarjeta --- */
+.card-front {
+    background: url('../imagenes/imagen1.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26, 41, 44, 0.9) 0%, rgba(0, 168, 181, 0.75) 100%);
+    z-index: 1;
+}
+
+.shape {
+    position: absolute;
+    z-index: 2;
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+.shape-1 {
+    width: 250px;
+    height: 250px;
+    background: var(--color-secondary);
+    /* Emerald */
+    opacity: 0.35;
+    top: -50px;
+    left: -50px;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--color-primary);
+    /* Teal */
+    opacity: 0.25;
+    bottom: -100px;
+    right: -50px;
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    background: var(--color-tertiary);
+    /* Lime */
+    opacity: 0.4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.front-content {
+    z-index: 3;
+    padding: 35px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.glass-effect-front {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.logo-img {
+    height: 100px;
+    width: auto;
+    z-index: 2;
+    margin-bottom: 0px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.tagline {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-light);
+    margin-top: 15px;
+    z-index: 2;
+}
+
+/* --- Reverso de la Tarjeta --- */
+.card-back {
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    background: #fff;
+}
+
+.back-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-section {
+    border-left: 6px solid var(--color-primary);
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+.name {
+    font-family: var(--font-heading);
+    color: #02202E;
+    /* Dark blue matching image */
+    font-size: 1.95rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.role {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #02202E;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.contact-item i {
+    color: var(--color-primary);
+    width: 25px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+}
+
+.qr-placeholder {
+    width: 150px;
+    height: 80px;
+    background: #EAF7F8;
+    /* Light cyan background matching image */
+    display: inline-block;
+}
+
+.logo-img-small {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+
+
+@media (max-width: 700px) {
+    .card {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        aspect-ratio: 1.75 / 1;
+        padding: 20px;
+    }
+
+    .logo-img {
+        height: 60px;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+    }
+
+    .name {
+        font-size: 1.4rem;
+    }
+
+    .card-back {
+        padding: 0 30px;
+    }
+}
+
+/* --- Print / PDF Export Styles --- */
+@media print {
+    body {
+        background-color: transparent !important;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+
+    * {
+        /* Force browsers to print background colors and images */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .card-container {
+        display: block;
+        gap: 0;
+    }
+
+    .card {
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        page-break-after: always;
+        /* Each card on a new page */
+        margin: 0;
+        border-radius: 0;
+        /* Removing radius for perfect print cut */
+    }
+
+    /* Adjust sizing slightly for standard letter/A4 print without margins */
+    @page {
+        margin: 0;
+        size: auto;
+    }
+}
