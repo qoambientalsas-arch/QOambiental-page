@@ -996,4 +996,24 @@ img {
     .hero-actions {
         flex-direction: column;
     }
+
+    /* Solución responsiva para Contacto y Formulario */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0;
+    }
+
+    .contact-form-wrapper {
+        padding: 30px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
