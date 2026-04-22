@@ -1,137 +1,118 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Set Current Year in Footer ---
-    const yearSpan = document.getElementById('current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-
-    // --- Navbar Scroll Effect ---
+    const homeView = document.getElementById('home-view');
+    const subpageView = document.getElementById('subpage-view');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const subpageSections = document.querySelectorAll('.subpage-section');
     const navbar = document.getElementById('navbar');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+    function handleRoute() {
+        const hash = window.location.hash || '#inicio';
+
+        // Mapping hashes to their respective subpage-view section IDs
+        const viewMapping = {
+            '#inicio': 'home',
+            '#nosotros': 'nosotros-content',
+            '#servicios': 'servicios-content',
+            '#trayectoria': 'trayectoria-content',
+            '#contacto': 'contacto-content'
+        };
+
+        const targetView = viewMapping[hash];
+
+        if (targetView === 'home') {
+            showView('home');
+        } else if (targetView) {
+            showView(targetView);
         } else {
-            navbar.classList.remove('scrolled');
+            showView('home');
         }
-    });
+        
+        updateActiveLink(hash);
+    }
 
-    // --- Mobile Menu Toggle ---
+    function showView(viewId) {
+        if (viewId === 'home') {
+            subpageView.style.display = 'none';
+            homeView.style.display = 'block';
+        } else {
+            homeView.style.display = 'none';
+            subpageView.style.display = 'block';
+            
+            // Hide all sub-sections and show the specific one
+            subpageSections.forEach(sec => sec.style.display = 'none');
+            const targetSec = document.getElementById(viewId);
+            if (targetSec) targetSec.style.display = 'block';
+            
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function updateActiveLink(hash) {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === hash) link.classList.add('active');
+        });
+    }
+
+    window.addEventListener('hashchange', handleRoute);
+    handleRoute();
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    if (localStorage.getItem('dark-mode') === 'true') document.body.classList.add('dark-mode');
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('dark-mode', isDark);
+            const icon = themeToggle.querySelector('i');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+    }
+
+    // Mobil Menu
     const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
+    const navMenu = document.getElementById('nav-links');
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            // Toggle icon from bars to times
-            const icon = menuToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                // Ensure icon color contrasts well in mobile
-                icon.style.color = 'var(--color-text-main)';
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                if (window.scrollY <= 50) {
-                    icon.style.color = 'var(--color-white)';
-                }
-            }
+            menuToggle.querySelector('i').className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
         });
-
-        // Close menu when a link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                if (window.scrollY <= 50) {
-                    icon.style.color = 'var(--color-white)';
-                }
-            });
-        });
+        navLinks.forEach(l => l.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.querySelector('i').className = 'fas fa-bars';
+        }));
     }
 
-    // --- Scroll Reveal Animation ---
-    const revealElements = document.querySelectorAll('.reveal, .reveal-up, .reveal-left, .reveal-right');
-
-    const revealObserverOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-        });
-    }, revealObserverOptions);
-
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
-
-    // --- Contact Form Handling (EmailJS Integration) ---
+    // EmailJS Form Handling
     const form = document.getElementById('contactForm');
     if (form) {
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
 
-            // Referencia al botón para dar feedback de envío
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-
-            // Cambiar estado a enviando
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            submitBtn.disabled = true;
-
-            // Collect form data matching HTML template bindings: {{name}}, {{email}}, etc.
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value || 'No proporcionado';
-            const serviceSelect = document.getElementById('service');
-            const service = serviceSelect.options[serviceSelect.selectedIndex].text;
-            const message = document.getElementById('message').value;
-
-            // Parametros para enviar a la plantilla
-            const templateParams = {
-                name: name,
-                email: email,
-                phone: phone,
-                service: service,
-                message: message
+            const params = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
             };
 
-            // Enviar usando EmailJS (Service ID, Template ID, params)
-            emailjs.send('service_yz77x7l', 'template_32qb98k', templateParams)
-                .then(function (response) {
-                    console.log('EXITO!', response.status, response.text);
-                    // Mostrar exito
-                    submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Mensaje Enviado!';
-                    submitBtn.style.backgroundColor = 'var(--color-secondary)';
-
-                    // Limpiar el formulario
+            emailjs.send('service_yz77x7l', 'template_32qb98k', params)
+                .then(() => {
+                    btn.innerText = '¡Enviado!';
                     form.reset();
-
-                    // Regresar el botón a la normalidad después de unos segundos
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.style.backgroundColor = '';
-                        submitBtn.disabled = false;
-                    }, 3000);
-
-                }, function (error) {
-                    console.log('FALLO...', error);
-                    alert('Hubo un error al intentar enviar tu mensaje. Por favor, intenta usar nuestros medios de contacto directos.');
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
+                    setTimeout(() => { btn.innerText = originalText; btn.disabled = false; }, 3000);
+                }, (err) => {
+                    console.error(err);
+                    alert('Error al enviar. Intente de nuevo.');
+                    btn.innerText = originalText; btn.disabled = false;
                 });
         });
     }
-
 });

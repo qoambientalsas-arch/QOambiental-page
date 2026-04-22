@@ -1,365 +1,228 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QO Ambiental | Consultoría y Servicios Ambientales ESG</title>
-    <!-- Favicon (Icono de pestaña) -->
+    <title>QO Ambiental | Inteligencia, Estrategia y Sostenibilidad</title>
     <link rel="icon" type="image/png" href="imagenes/Logo QO-recortado.png">
-    <link rel="apple-touch-icon" href="imagenes/Logo QO-recortado.png">
-    <meta name="description"
-        content="Firma colombiana especializada en consultoría y gestión integral socioambiental. Ayudamos a cumplir la normatividad ambiental y generar soluciones de sostenibilidad.">
-    <!-- Open Graph para búsquedas y redes sociales -->
-    <meta property="og:title" content="QO Ambiental | Consultoría y Servicios Ambientales ESG">
-    <meta property="og:description" content="Firma colombiana especializada en consultoría y gestión integral socioambiental.">
-    <meta property="og:image" content="https://qoambiental.com/imagenes/Logo%20QO-recortado.png">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://qoambiental.com">
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap"
-        rel="stylesheet">
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-        (function () {
-            // Inicializar EmailJS con la Public Key
-            emailjs.init("SLXnbGHH4UOuNEfDZ");
-        })();
+        (function () { emailjs.init("SLXnbGHH4UOuNEfDZ"); })();
     </script>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
+    <!-- Nav Dashboard Elite -->
+    <nav class="navbar scrolled" id="navbar" style="background: rgba(13, 38, 48, 0.6); backdrop-filter: blur(15px);">
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="imagenes/Logo QO.png" alt="QO Ambiental Logo" class="logo-img">
+            <a href="#inicio" class="logo">
+                <img src="imagenes/Logo QO.png" alt="QO Logo" class="logo-img">
             </a>
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="#nosotros" class="nav-link">Quiénes Somos</a></li>
+            <div class="nav-menu">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
                     <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="#objetivos" class="nav-link">Objetivos</a></li>
-                    <li><a href="#clientes" class="nav-link">Clientes</a></li>
+                    <li><a href="#trayectoria" class="nav-link">Trayectoria</a></li>
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
-                <a href="#contacto" class="btn btn-primary nav-cta">Solicitar cotización</a>
+                <button id="theme-toggle" class="theme-toggle" title="Tema"><i class="fas fa-moon"></i></button>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Menú"><i class="fas fa-bars"></i></button>
             </div>
-            <button class="menu-toggle" id="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero" id="inicio">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1 class="hero-title reveal">Transformando el futuro con <span>Sostenibilidad</span></h1>
-            <p class="hero-subtitle reveal delay-1">Consultoría y servicios ambientales ESG para garantizar una relación
-                armónica con nuestro entorno y proteger la riqueza de Colombia.</p>
-            <div class="hero-actions reveal delay-2">
-                <a href="#nosotros" class="btn btn-secondary">Conócenos</a>
-                <a href="#contacto" class="btn btn-primary">Solicitar cotización</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <a href="#nosotros" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
-        </div>
-    </header>
-
-    <!-- Quiénes Somos -->
-    <section class="section about" id="nosotros">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text reveal-left">
-                    <span class="section-tag">Sobre Nosotros</span>
-                    <h2 class="section-title">Especialistas en <span>Gestión Socioambiental</span></h2>
-                    <p><strong>QO Ambiental</strong> es una firma colombiana especializada en consultoría y gestión
-                        integral socioambiental.</p>
-                    <p>Ayudamos a empresas, instituciones y comunidades a cumplir la normatividad ambiental colombiana
-                        mientras generamos soluciones reales de sostenibilidad que optimizan recursos naturales y
-                        reducen el impacto del cambio climático.</p>
-                    <div class="feature-bullets">
-                        <div class="bullet">
-                            <div class="bullet-icon"><i class="fas fa-leaf"></i></div>
-                            <div class="bullet-text">Cumplimiento Normativo</div>
-                        </div>
-                        <div class="bullet">
-                            <div class="bullet-icon"><i class="fas fa-globe-americas"></i></div>
-                            <div class="bullet-text">Soluciones de Sostenibilidad</div>
+    <div id="spa-container">
+        
+        <!-- VISTA: INICIO -->
+        <div id="home-view" class="view">
+            <section class="hero" id="inicio" style="padding: 0; background: linear-gradient(to right, rgba(13, 38, 48, 0.9) 35%, rgba(13, 38, 48, 0.1) 100%), url('imagenes/imagen1.jpg') center/cover no-repeat; height: 100vh; display: flex; align-items: center; position: relative;">
+                <div class="container" style="position: relative; z-index: 10;">
+                    <div style="max-width: 900px; animation: fadeInHero 1s ease-out forwards;">
+                        <span class="section-tag" style="background: var(--lime); color: var(--dark); font-weight: 900; letter-spacing: 3px;">CONSULTORÍA ÉLITE 2026</span>
+                        <h1 style="font-size: 5.5rem; color: white; line-height: 0.85; margin: 25px 0; letter-spacing: -3px; font-weight: 900;">QO-AMBIENTAL<br><span style="color: var(--lime);">S.A.S ZOMAC</span></h1>
+                        <p style="font-size: 1.5rem; color: white; opacity: 1; margin-bottom: 50px; max-width: 700px; border-left: 6px solid var(--lime); padding-left: 30px; line-height: 1.5; font-weight: 500;">Viabilidad socioambiental integral mediante inteligencia territorial y rigor técnico táctico.</p>
+                        <div style="display: flex; gap: 20px;">
+                            <a href="#servicios" class="btn btn-primary" style="padding: 20px 50px; font-size: 1.1rem; border-radius: 15px;">Explorar Portafolio</a>
+                            <a href="Brochure Corporativo _ QO Ambiental-1.pdf" download class="btn btn-secondary" style="padding: 20px 50px; font-size: 1.1rem; border-radius: 15px; border-width: 3px;"><i class="fas fa-file-download"></i> Descargar Brochure</a>
                         </div>
                     </div>
                 </div>
-                <div class="about-image-wrapper reveal-right">
-                    <div class="glass-card about-card">
-                        <i class="fas fa-seedling card-icon"></i>
-                        <h3>Nuestro Compromiso</h3>
-                        <p>Impulsamos el desarrollo económico protegiendo el ecosistema colombiano.</p>
-                    </div>
-                    <!-- Placeholder generic abstract image for structure -->
-                    <div class="about-img-bg"></div>
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Misión y Visión -->
-    <section class="section mission-vision bg-light">
-        <div class="container">
-            <div class="mv-grid">
-                <div class="mv-card reveal-up glass-effect hover-float">
-                    <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
-                    <h3>Nuestra Misión</h3>
-                    <p>Impulsamos la sostenibilidad ambiental mediante consultoría especializada y gestión integral que
-                        asegura el cumplimiento de los estándares socioambientales y la creación de soluciones que
-                        optimizan los recursos naturales, reducen el impacto ambiental y promueven el desarrollo
-                        económico de nuestros aliados, instituciones y comunidades.</p>
-                </div>
-                <div class="mv-card reveal-up delay-1 glass-effect hover-float">
-                    <div class="mv-icon"><i class="fas fa-binoculars"></i></div>
-                    <h3>Visión 2045</h3>
-                    <p>En 2045 seremos un referente en la transformación de la gestión ambiental en Colombia y la
-                        región, donde empresas, instituciones y comunidades establezcan una relación armónica con el
-                        entorno y sus ecosistemas. Lideraremos un cambio profundo en el que la sostenibilidad sea el eje
-                        central de cada decisión y acción.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nuestros Servicios -->
-    <section class="section services" id="servicios">
-        <div class="container">
-            <div class="section-header center reveal">
-                <span class="section-tag">Lo que hacemos</span>
-                <h2 class="section-title">Nuestros <span>Servicios</span></h2>
-                <p class="section-desc">Ofrecemos soluciones integrales y expertas para guiar a tu empresa hacia la
-                    excelencia y el cumplimiento ambiental.</p>
-            </div>
-            <div class="services-grid">
-                <!-- Servicio 1 -->
-                <div class="service-card reveal-up">
-                    <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
-                    <h4>Consultoría e Ingeniería</h4>
-                    <p>Consultoría, interventoría, auditoría, servicios profesionales e ingeniería de proyectos
-                        ambientales.</p>
-                </div>
-                <!-- Servicio 2 -->
-                <div class="service-card reveal-up delay-1">
-                    <div class="service-icon"><i class="fas fa-file-signature"></i></div>
-                    <h4>Trámites y Licencias</h4>
-                    <p>Gestión y trámite de consultas previas, audiencias públicas, licencias y permisos ambientales.
-                    </p>
-                </div>
-                <!-- Servicio 3 -->
-                <div class="service-card reveal-up delay-2">
-                    <div class="service-icon"><i class="fas fa-book-open"></i></div>
-                    <h4>Estudios Ambientales</h4>
-                    <p>Elaboración de Diagnósticos de alternativas, EIA, PMA, Planes de 1% y Compensación Ambiental, y
-                        Planes de Contingencia.</p>
-                </div>
-                <!-- Servicio 4 -->
-                <div class="service-card reveal-up">
-                    <div class="service-icon"><i class="fas fa-hand-holding-water"></i></div>
-                    <h4>Obligaciones Ambientales</h4>
-                    <p>Gestión, ejecución, seguimiento, control y cumplimiento de obligaciones obligatorias y
-                        voluntarias de 1% y compensación.</p>
-                </div>
-                <!-- Servicio 5 -->
-                <div class="service-card reveal-up delay-1">
-                    <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <h4>Capacitación Ambiental</h4>
-                    <p>Realización de programas de capacitación e información ambiental para equipos y comunidades.</p>
-                </div>
-                <!-- Servicio 6 -->
-                <div class="service-card reveal-up delay-2">
-                    <div class="service-icon"><i class="fas fa-microscope"></i></div>
-                    <h4>Monitoreo Ambiental</h4>
-                    <p>Monitoreo de acuíferos, aguas superficiales, aire, ruido y suelos durante la ejecución de
-                        proyectos y operaciones.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Objetivos Estratégicos -->
-    <section class="section objectives bg-dark text-white" id="objetivos">
-        <div class="container">
-            <div class="objectives-content reveal">
-                <span class="section-tag tag-light">Nuestro Propósito</span>
-                <h2 class="section-title">Objetivos <span>Estratégicos</span></h2>
-                <ul class="obj-list">
-                    <li class="obj-item reveal-left">
-                        <div class="obj-icon"><i class="fas fa-check"></i></div>
+        <!-- VISTAS SUBPÁGINAS -->
+        <div id="subpage-view" class="view" style="display: none; padding-top: 100px; background: var(--bg-page);">
+            
+            <!-- NOSOTROS (CON IMAGEN DE PORTADA) -->
+            <section id="nosotros-content" class="subpage-section section">
+                <div class="container">
+                    <div class="g-2" style="margin-bottom: 60px; align-items: center;">
                         <div>
-                            <h4>Fomentar prácticas sostenibles</h4>
-                            <p>Desarrollamos soluciones personalizadas que reducen la huella ambiental y mejoran el
-                                desempeño operativo de cada cliente.</p>
-                        </div>
-                    </li>
-                    <li class="obj-item reveal-left delay-1">
-                        <div class="obj-icon"><i class="fas fa-check"></i></div>
-                        <div>
-                            <h4>Asegurar el cumplimiento normativo</h4>
-                            <p>Mantenemos los estándares regulatorios y gestionamos de forma proactiva los riesgos
-                                legales.</p>
-                        </div>
-                    </li>
-                    <li class="obj-item reveal-left delay-2">
-                        <div class="obj-icon"><i class="fas fa-check"></i></div>
-                        <div>
-                            <h4>Mitigar el cambio climático</h4>
-                            <p>Implementamos estrategias para la reducción de emisiones e impulsamos la transición hacia
-                                una economía baja en carbono.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="obj-decoration"></div>
-    </section>
-
-    <!-- Clientes Satisfechos -->
-    <section class="section clients" id="clientes">
-        <div class="container">
-            <div class="section-header center reveal">
-                <span class="section-tag">Testimonios y Aliados</span>
-                <h2 class="section-title">Clientes <span>Satisfechos</span></h2>
-                <p class="section-desc">Instituciones y empresas que han confiado en nuestra gestión ambiental.</p>
-            </div>
-            <div class="clients-wheel">
-                <div class="client-logo glass-effect reveal-up">
-                    <span class="c-name">Scatec</span>
-                    <img src="imagenes/scatec logo.png" class="client-logo-img" alt="Scatec">
-                </div>
-                <div class="client-logo glass-effect reveal-up delay-1">
-                    <span class="c-name">Constructora Berdez</span>
-                    <img src="imagenes/berdez logo.jpg" class="client-logo-img" alt="Constructora Berdez">
-                </div>
-                <div class="client-logo glass-effect reveal-up delay-2">
-                    <span class="c-name">Universidad Militar</span>
-                    <img src="imagenes/militar logo.png" class="client-logo-img" alt="Universidad Militar">
-                </div>
-                <div class="client-logo glass-effect reveal-up delay-3">
-                    <span class="c-name">Consulcons</span>
-                    <img src="imagenes/Consulcons.jpg" class="client-logo-img" id="logo-consulcons" alt="Consulcons">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contáctanos (Formulario) -->
-    <section class="section contact-section bg-light" id="contacto">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-text reveal-left">
-                    <span class="section-tag">Hablemos</span>
-                    <h2 class="section-title">Transformemos el futuro <span>juntos</span></h2>
-                    <p>Déjanos tus datos y nos pondremos en contacto contigo para ofrecerte la mejor solución ambiental
-                        para tu empresa o proyecto.</p>
-                    <div class="info-blocks mt-4">
-                        <div class="info-block">
-                            <i class="fas fa-envelope-open-text icon"></i>
-                            <div>
-                                <h5>Correos</h5>
-                                <p>qoambientalsas@gmail.com<br>luisaferor@gmail.com</p>
+                            <span class="section-tag">Identidad Corporativa</span>
+                            <h2 class="section-title">Nuestra <span>Misión y Visión</span></h2>
+                            <p class="lead" style="font-size: 1.5rem; margin-bottom: 30px;">Comprometidos con el desarrollo regenerativo de Colombia.</p>
+                            <div class="g-2" style="gap: 20px;">
+                                <div class="glass-card" style="padding: 30px; border-top: 6px solid var(--teal);">
+                                    <h4 style="color: var(--teal); margin-bottom: 15px;">Misión</h4>
+                                    <p style="font-size: 0.85rem; line-height: 1.7; opacity: 0.8;">Garantizar el equilibrio entre el desarrollo industrial y la regeneración ambiental mediante soluciones basadas en datos, rigor científico y una visión holística del territorio.</p>
+                                </div>
+                                <div class="glass-card" style="padding: 30px; border-top: 6px solid var(--lime);">
+                                    <h4 style="color: var(--dark); margin-bottom: 15px;">Visión 2030</h4>
+                                    <p style="font-size: 0.85rem; line-height: 1.7; opacity: 0.8;">Consolidarnos como el referente nacional en inteligencia territorial y consultoría de sostenibilidad estratégica para activos de alto impacto en América Latina.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="info-block">
-                            <i class="fas fa-phone-alt icon"></i>
-                            <div>
-                                <h5>Teléfono</h5>
-                                <p>+57 311 538 9614</p>
-                            </div>
+                        <div class="reveal-img" style="border-radius: 30px; overflow: hidden; box-shadow: var(--shadow-premium);">
+                            <img src="imagenes/qo_portada_es.png" alt="QO Portada" style="width: 100%; display: block;">
                         </div>
                     </div>
                 </div>
-                <div class="contact-form-wrapper reveal-right glass-effect">
-                    <form action="#" class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" placeholder="tucorreo@empresa.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Celular (Opcional)</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+57 300 000 0000">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Cotización / Servicio de Interés</label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Selecciona un servicio</option>
-                                <option value="consultoria">Consultoría e Ingeniería</option>
-                                <option value="tramites">Trámites y Licencias</option>
-                                <option value="estudios">Estudios Ambientales (EIA, PMA, etc.)</option>
-                                <option value="obligaciones">Obligaciones (1% y Compensación)</option>
-                                <option value="capacitacion">Capacitación Ambiental</option>
-                                <option value="monitoreo">Monitoreo Ambiental</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Descripción o Mensaje</label>
-                            <textarea id="message" name="message" rows="4"
-                                placeholder="Cuéntanos más sobre tu requerimiento..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Enviar Solicitud <i
-                                class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Footer y Contacto -->
-    <footer class="footer" id="contacto">
+            <!-- SERVICIOS (CON IMÁGENES TÉCNICAS) -->
+            <section id="servicios-content" class="subpage-section section" style="display: none;">
+                <div class="container">
+                    <div style="text-align: center; margin-bottom: 60px;">
+                        <span class="section-tag">Capacidades Técnicas Especializadas</span>
+                        <h2 class="section-title">Portafolio de <span>8 Líneas de Negocio</span></h2>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(430px, 1fr)); gap: 30px;">
+                        <!-- Gestión Ambiental -->
+                        <div class="glass-card" style="border-top: 6px solid var(--teal);">
+                            <h3 style="color: var(--teal); margin-bottom: 15px;"><i class="fas fa-file-invoice"></i> Gestión Ambiental</h3>
+                            <ul style="display: grid; gap: 8px; font-size: 0.85rem; list-style: circle; padding-left: 20px; margin-bottom: 20px;">
+                                <li>Licenciamiento ANLA/CAR: EIA, PMA y DAA.</li>
+                                <li>Permitología ágil: Aguas, vertimientos y emisiones.</li>
+                                <li>Due Diligence Táctico y auditorías regulatorias.</li>
+                            </ul>
+                            <img src="imagenes/imagen 2.jpg" style="width: 100%; border-radius: 15px; height: 150px; object-fit: cover; opacity: 0.8;">
+                        </div>
+                        
+                        <!-- ESG con imagen técnica -->
+                        <div class="glass-card" style="border-top: 6px solid var(--lime);">
+                            <h3 style="color: var(--dark); margin-bottom: 15px;"><i class="fas fa-chart-line"></i> Sostenibilidad & ESG</h3>
+                            <ul style="display: grid; gap: 8px; font-size: 0.85rem; list-style: circle; padding-left: 20px; margin-bottom: 20px;">
+                                <li>Implementación del Informe 08 Supersociedades.</li>
+                                <li>Estrategia Net Zero y Huella de Carbono.</li>
+                                <li>Materialidad bajo estándares GRI, SASB y NIIF.</li>
+                            </ul>
+                            <img src="imagenes/qo_esg_es.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;">
+                        </div>
+
+                        <!-- Riesgos -->
+                        <div class="glass-card" style="border-top: 6px solid var(--teal);">
+                            <h3 style="color: var(--teal); margin-bottom: 15px;"><i class="fas fa-shield-alt"></i> Riesgos & Defensa</h3>
+                            <ul style="display: grid; gap: 8px; font-size: 0.85rem; list-style: circle; padding-left: 20px; margin-bottom: 20px;">
+                                <li>Defensa procesos sancionatorios (Ley 1333 de 2009).</li>
+                                <li>Derechos Humanos y Debida Diligencia Social.</li>
+                                <li>Remediación Táctica y gestión de crisis.</li>
+                            </ul>
+                            <img src="imagenes/imagen 3.jpg" style="width: 100%; border-radius: 15px; height: 150px; object-fit: cover; opacity: 0.8;">
+                        </div>
+
+                        <!-- GIS con imagen técnica -->
+                        <div class="glass-card" style="border-top: 6px solid var(--lime);">
+                            <h3 style="color: var(--dark); margin-bottom: 15px;"><i class="fas fa-map-location-dot"></i> Inteligencia GIS</h3>
+                            <ul style="display: grid; gap: 8px; font-size: 0.85rem; list-style: circle; padding-left: 20px; margin-bottom: 20px;">
+                                <li>Dashboards personalizados para control de activos.</li>
+                                <li>Monitoreo Satelital y Teledetección Avanzada.</li>
+                                <li>Cartografía crítica y análisis multicriterio.</li>
+                            </ul>
+                            <img src="imagenes/qo_gis_es.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TRAYECTORIA -->
+            <section id="trayectoria-content" class="subpage-section section" style="display: none;">
+                <div class="container">
+                    <div style="text-align: center; margin-bottom: 60px;">
+                        <span class="section-tag">Clientes & Partners</span>
+                        <h2 class="section-title">Confianza e <span>Impacto Real</span></h2>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                        <div class="glass-card" style="text-align: center; padding: 30px; background: white;">
+                            <img src="imagenes/scatec logo.png" style="height: 50px; width: 100%; object-fit: contain; margin-bottom: 15px;">
+                            <h5 style="color: var(--teal); margin-bottom: 10px;">Scatec</h5>
+                            <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Gestión ambiental estratégica para el despliegue de proyectos FNCER a gran escala.</p>
+                        </div>
+                        <div class="glass-card" style="text-align: center; padding: 30px; background: white;">
+                            <img src="imagenes/berdez logo.jpg" style="height: 50px; width: 100%; object-fit: contain; margin-bottom: 15px;">
+                            <h5 style="color: var(--teal); margin-bottom: 10px;">Berdez</h5>
+                            <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Desarrollo de Planes de Manejo Ambiental (PMA) y auditoría técnica de activos.</p>
+                        </div>
+                        <div class="glass-card" style="text-align: center; padding: 30px; background: white;">
+                            <img src="imagenes/militar logo.png" style="height: 50px; width: 100%; object-fit: contain; margin-bottom: 15px;">
+                            <h5 style="color: var(--teal); margin-bottom: 10px;">U. Militar</h5>
+                            <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Soporte consultivo integral en viabilidad territorial y sostenibilidad institucional.</p>
+                        </div>
+                        <div class="glass-card" style="text-align: center; padding: 30px; background: white;">
+                            <img src="imagenes/Consulcons.jpg" style="height: 50px; width: 100%; object-fit: contain; margin-bottom: 15px;">
+                            <h5 style="color: var(--teal); margin-bottom: 10px;">Consulcons</h5>
+                            <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Implementación de Inteligencia Territorial GIS y licenciamiento ambiental táctico.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACTO -->
+            <section id="contacto-content" class="subpage-section section" style="display: none;">
+                <div class="container">
+                    <div class="g-2" style="align-items: start;">
+                        <div>
+                            <span class="section-tag">Conexión Elite</span>
+                            <h2 class="section-title">Inicie su <span>Estrategia</span></h2>
+                            <div style="margin-top: 30px;">
+                                <a href="https://wa.me/573115389614" class="glass-card" style="padding: 20px; display: flex; gap: 20px; align-items: center; border-left: 8px solid #25D366; text-decoration: none; color: inherit;">
+                                    <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: #25D366;"></i>
+                                    <div><h4 style="margin:0;">Línea Directa</h4><p style="font-size:0.8rem; opacity:0.6;">Respuesta prioritaria.</p></div>
+                                </a>
+                                <a href="Brochure Corporativo _ QO Ambiental-1.pdf" download class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 20px;"><i class="fas fa-file-pdf"></i> Descargar Brochure Colectivo</a>
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding: 50px;">
+                            <form id="contactForm">
+                                <h3 style="margin-bottom: 25px;">Formulario Técnico</h3>
+                                <div style="display: grid; gap: 15px;">
+                                    <input type="text" id="name" placeholder="Empresa / Contacto" required style="width:100%; padding:15px; border-radius:10px; border:1px solid var(--border); background: var(--bg-page); color: var(--text-main); outline:none;">
+                                    <input type="email" id="email" placeholder="Correo corporativo" required style="width:100%; padding:15px; border-radius:10px; border:1px solid var(--border); background: var(--bg-page); color: var(--text-main); outline:none;">
+                                    <textarea id="message" rows="5" placeholder="Descripción de su requerimiento técnico..." required style="width:100%; padding:15px; border-radius:10px; border:1px solid var(--border); background: var(--bg-page); color: var(--text-main); outline:none;"></textarea>
+                                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px;">Enviar Requerimiento</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer Compacto -->
+    <footer class="footer" style="padding: 30px 0;">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo footer-logo">
-                        <img src="imagenes/Logo QO.png" alt="QO Ambiental Logo" class="logo-img footer-logo-img">
-                    </a>
-                    <p class="footer-tagline">Consultoría y servicios ambientales ESG.</p>
-                    <p class="brand-desc">Liderando la transformación hacia la sostenibilidad para un entorno armónico y
-                        con futuro.</p>
+            <div class="footer-grid" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <img src="imagenes/Logo QO.png" alt="QO Logo" class="footer-logo" style="height: 35px; margin-bottom: 5px;">
+                    <p style="opacity: 0.5; font-size: 0.8rem; margin: 0;">Firma de consultoría estratégica ambiental elite.</p>
                 </div>
-                <div class="footer-contact">
-                    <h4>Contacto</h4>
-                    <ul class="contact-list">
-                        <li><i class="fas fa-envelope"></i> <a
-                                href="mailto:qoambientalsas@gmail.com">qoambientalsas@gmail.com</a></li>
-                        <li><i class="fas fa-envelope-open"></i> <a
-                                href="mailto:luisaferor@gmail.com">luisaferor@gmail.com</a></li>
-                        <li><i class="fas fa-phone-alt"></i> <span>+57 311 538 9614</span></li>
-                        <li><i class="fas fa-map-marker-alt"></i> Carrera 1F #4-74, Villanueva, Casanare, Colombia</li>
-                    </ul>
+                <div style="text-align: right; opacity: 0.5; font-size: 0.75rem;">
+                    <p style="margin: 0;">&copy; 2026 QO Ambiental S.A.S | NIT: 901856042-1</p>
                 </div>
-                <div class="footer-legal">
-                    <h4>Información Legal</h4>
-                    <p><strong>Representante Legal:</strong><br>Luisa Fernanda Ortiz Triana</p>
-                    <p><strong>NIT:</strong> 901856042-1</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> QO Ambiental. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <style> @keyframes fadeInHero { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } } </style>
     <script src="script.js"></script>
 </body>
-
 </html>

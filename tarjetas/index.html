@@ -1,85 +1,180 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjeta de Presentación | QO Ambiental</title>
-    <!-- Favicon (Icono de pestaña) -->
-    <link rel="icon" type="image/png" href="../imagenes/Logo QO-recortado.png">
-    <link rel="apple-touch-icon" href="../imagenes/Logo QO-recortado.png">
-    <!-- Open Graph para búsquedas y redes sociales -->
-    <meta property="og:title" content="Tarjeta de Presentación | QO Ambiental">
-    <meta property="og:image" content="https://qoambiental.com/imagenes/Logo%20QO-recortado.png">
-    <meta property="og:url" content="https://qoambiental.com/tarjetas">
-    <!-- Fonts -->
+    <title>Tarjeta Elite | QO Ambiental</title>
+    <link rel="icon" href="../imagenes/Logo QO-recortado.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --teal: #00A8B5;
+            --lime: #8BC34A;
+            --dark: #0D2630;
+            --white: #FFFFFF;
+            --grad-dark: linear-gradient(145deg, #0D2630 0%, #1A3A26 100%);
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #eef2f3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            gap: 60px;
+            min-height: 100vh;
+        }
+
+        .label {
+            font-size: .75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #889;
+            margin-bottom: -40px;
+        }
+
+        /* ══ TARJETA (90x55mm) ══ */
+        .card {
+            width: 540px;
+            height: 310px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            background: var(--white);
+            transition: transform 0.3s ease;
+        }
+
+        /* ══ FRENTE ══ */
+        .card-front {
+            background: var(--grad-dark);
+            height: 100%; width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .f-logo {
+            height: 100px;
+            filter: brightness(0) invert(1);
+            z-index: 2;
+        }
+        .f-stripe {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--lime), var(--teal));
+        }
+
+        /* ══ REVERSO ══ */
+        .card-back {
+            display: flex;
+            height: 100%; width: 100%;
+        }
+        .b-left {
+            width: 200px;
+            background: var(--grad-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px;
+            border-right: 6px solid var(--lime);
+        }
+        .b-qr {
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        .b-qr img { width: 110px; height: 110px; display: block; }
+        
+        .b-right {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .b-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+        .b-role {
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+        .c-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: .9rem;
+            color: #556;
+            margin-bottom: 10px;
+        }
+        .c-row i { color: var(--teal); width: 18px; }
+
+        .b-nit {
+            position: absolute;
+            bottom: 20px; right: 30px;
+            font-size: .65rem;
+            font-weight: 700;
+            color: #ccc;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .card { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+            @page { size: A4; margin: 10mm; }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="card-container">
 
-        <!-- Frente de la Tarjeta -->
-        <div class="card card-front">
-            <!-- Capa de fondo -->
-            <div class="bg-overlay"></div>
-            <!-- Elementos decorativos (orbs) -->
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-
-            <!-- Contenedor frontal principal con efecto cristal -->
-            <div class="front-content glass-effect-front">
-                <img src="../imagenes/Logo QO.png" alt="QO Ambiental Logo" class="logo-img">
-                <div class="tagline">Consultoría y servicios ambientales ESG</div>
-            </div>
+    <p class="label">Anverso</p>
+    <div class="card">
+        <div class="card-front">
+            <img src="../imagenes/Logo QO.png" alt="QO" class="f-logo">
+            <div class="f-stripe"></div>
         </div>
-
-        <!-- Reverso de la Tarjeta -->
-        <div class="card card-back">
-            <div class="back-wrapper">
-                <div class="header-section">
-                    <h2 class="name">Luisa Fernanda Ortiz Triana</h2>
-                    <p class="role">REPRESENTANTE LEGAL</p>
-                </div>
-
-                <div class="contact-section">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>qoambientalsas@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope-open-text"></i>
-                        <span>luisaferor@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+57 311 538 9614</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Cra 1F #4-74, Villanueva, Casanare</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-globe"></i>
-                        <span>www.qoambiental.com</span>
-                    </div>
-                </div>
-
-                <div class="bottom-section">
-                    <div class="qr-placeholder"></div>
-                    <img src="../imagenes/Logo QO.png" alt="QO Ambiental Logo" class="logo-img-small">
-                </div>
-            </div>
-        </div>
-
     </div>
-</body>
 
+    <p class="label" style="margin-top: 20px;">Reverso</p>
+    <div class="card">
+        <div class="card-back">
+            <div class="b-left">
+                <div class="b-qr">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://qoambiental.com/&color=0D2630&bgcolor=FFFFFF&qzone=1&format=png" alt="QR">
+                </div>
+            </div>
+            <div class="b-right">
+                <div class="b-name">Luisa Fernanda<br>Ortiz Triana</div>
+                <div class="b-role">Directora General</div>
+                
+                <div class="b-contact">
+                    <div class="c-row"><i class="fas fa-envelope"></i> qoambientalsas@gmail.com</div>
+                    <div class="c-row"><i class="fas fa-phone"></i> +57 311 538 9614</div>
+                    <div class="c-row"><i class="fas fa-globe"></i> www.qoambiental.com</div>
+                    <div class="c-row"><i class="fas fa-location-dot"></i> Villanueva, Casanare</div>
+                </div>
+
+                <div class="b-nit">NIT: 901856042-1</div>
+            </div>
+        </div>
+    </div>
+
+</body>
 </html>
