@@ -102,11 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const serviceEl = document.getElementById('service');
 
                 const params = {
-                    from_name: nameEl ? nameEl.value : 'Prospecto Web',
-                    reply_to: emailEl ? emailEl.value : '',
-                    phone_number: document.getElementById('phone') ? document.getElementById('phone').value : 'No proporcionado',
-                    selected_service: serviceEl ? serviceEl.value : 'No especificado',
-                    message_html: messageEl ? messageEl.value : ''
+                    name: nameEl ? nameEl.value : 'Prospecto Web',
+                    email: emailEl ? emailEl.value : '',
+                    phone: document.getElementById('phone') ? document.getElementById('phone').value : 'No proporcionado',
+                    service: serviceEl ? serviceEl.value : 'No especificado',
+                    message: messageEl ? messageEl.value : ''
                 };
 
                 // Using IDs provided: service_yz77x7l, template_32qb98k
