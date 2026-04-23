@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjeta Elite | QO Ambiental</title>
+    <title>Tarjeta Final Élite | QO-AMBIENTAL</title>
     <link rel="icon" href="../imagenes/Logo QO-recortado.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,162 +16,160 @@
             --dark: #0D2630;
             --white: #FFFFFF;
             --grad-dark: linear-gradient(145deg, #0D2630 0%, #1A3A26 100%);
+            --grad-line: linear-gradient(90deg, var(--teal), var(--lime));
         }
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #eef2f3;
+            background: #cbd5e0;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 60px 20px;
-            gap: 60px;
+            gap: 80px;
             min-height: 100vh;
         }
 
-        .label {
-            font-size: .75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #889;
-            margin-bottom: -40px;
-        }
+        .lbl { font-size:.7rem; font-weight:900; letter-spacing:4px; color:#4a5568; text-transform:uppercase; margin-bottom:-60px;}
 
-        /* ══ TARJETA (90x55mm) ══ */
-        .card {
+        /* ══ TARJETA (90x55mm equiv) ══ */
+        .card-container {
             width: 540px;
             height: 310px;
-            border-radius: 24px;
+            border-radius: 40px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
             background: var(--white);
-            transition: transform 0.3s ease;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* ══ FRENTE ══ */
-        .card-front {
+        /* ══ ANVERSO ══ */
+        .front {
             background: var(--grad-dark);
-            height: 100%; width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
         }
-        .f-logo {
-            height: 100px;
-            filter: brightness(0) invert(1);
-            z-index: 2;
+        .power-icon {
+            position: absolute; color: #fff; opacity: 0.04; font-size: 16rem; pointer-events: none;
         }
-        .f-stripe {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 8px;
-            background: linear-gradient(90deg, var(--lime), var(--teal));
+        .pi-1 { top: -20px; left: -40px; transform: rotate(-15deg); }
+        .pi-2 { bottom: -40px; right: -30px; transform: rotate(10deg); }
+        
+        .front-logo { height: 110px; filter: brightness(0) invert(1); z-index: 10; position: relative;}
+        .front-tag { 
+            margin-top: 25px; font-size: .85rem; font-weight: 800; color: var(--lime); 
+            letter-spacing: 8px; text-transform: uppercase; z-index: 10;
+        }
+        .line-accent {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 12px;
+            background: var(--grad-line); z-index: 10;
         }
 
         /* ══ REVERSO ══ */
-        .card-back {
-            display: flex;
-            height: 100%; width: 100%;
-        }
-        .b-left {
-            width: 200px;
-            background: var(--grad-dark);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 30px;
-            border-right: 6px solid var(--lime);
-        }
-        .b-qr {
-            background: white;
-            padding: 10px;
-            border-radius: 15px;
-        }
-        .b-qr img { width: 110px; height: 110px; display: block; }
+        .back { display: flex; width: 100%; height: 100%; background: #fff; position: relative; }
         
-        .b-right {
-            flex: 1;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
+        .b-side {
+            width: 180px; background: var(--grad-dark);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 20px; border-right: 8px solid var(--lime); position: relative; z-index: 5;
         }
-        .b-name {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--dark);
-            line-height: 1.1;
-            margin-bottom: 5px;
+        .b-side-qr {
+            background: white; padding: 12px; border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
-        .b-role {
-            font-size: .85rem;
-            font-weight: 700;
-            color: var(--teal);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-        }
-        .c-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: .9rem;
-            color: #556;
-            margin-bottom: 10px;
-        }
-        .c-row i { color: var(--teal); width: 18px; }
+        .b-side-qr img { width: 110px; height: 110px; display: block; border-radius: 4px; }
 
-        .b-nit {
-            position: absolute;
-            bottom: 20px; right: 30px;
-            font-size: .65rem;
-            font-weight: 700;
-            color: #ccc;
+        .b-main { 
+            flex: 1; padding: 45px 40px; display: flex; flex-direction: column; 
+            justify-content: center; position: relative; overflow: hidden;
+        }
+        
+        .b-name { font-size: 2.2rem; font-weight: 900; color: var(--dark); line-height: 1; margin-bottom: 8px; letter-spacing: -1.5px;}
+        .b-role { font-size: .95rem; font-weight: 800; color: var(--teal); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px; }
+        
+        .b-data { display: grid; gap: 10px; margin-bottom: 20px; }
+        .data-row { display: flex; align-items: center; gap: 12px; font-size: .85rem; color: #334155; font-weight: 700; }
+        .data-row i { color: var(--teal); width: 18px; font-size: 1.1rem; }
+
+        .b-footer-clean {
+            display: flex; gap: 10px; font-size: .65rem; font-weight: 900; 
+            color: var(--teal); text-transform: uppercase; letter-spacing: 2.5px;
+            border-top: 1px solid #eee; padding-top: 15px;
+        }
+        .b-footer-clean span { color: #cbd5e0; }
+
+        .b-nit-side {
+            margin-top: 5px; font-size: .6rem; font-weight: 800; color: #fff; opacity: 0.3; letter-spacing: 1px;
         }
 
         @media print {
-            body { background: white; padding: 0; }
-            .card { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
-            @page { size: A4; margin: 10mm; }
+            @page {
+                margin: 0;
+                size: auto;
+            }
+            html, body {
+                background: none;
+                margin: 0;
+                padding: 0;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .card-container {
+                box-shadow: none;
+                border: 0.1px solid #eee;
+                break-inside: avoid;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            i, img, .front, .b-side, .line-accent {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
         }
     </style>
 </head>
 <body>
 
-    <p class="label">Anverso</p>
-    <div class="card">
-        <div class="card-front">
-            <img src="../imagenes/Logo QO.png" alt="QO" class="f-logo">
-            <div class="f-stripe"></div>
+    <p class="lbl">Anverso - Iconografía de Poder (Iconos Ajustados)</p>
+    <div class="card-container">
+        <div class="front">
+            <!-- Iconos de Poder Ajustados para Reconocimiento -->
+            <i class="fas fa-leaf power-icon pi-1"></i>
+            <i class="fas fa-bolt power-icon pi-2"></i>
+            <img src="../imagenes/Logo QO.png" alt="QO-AMBIENTAL" class="front-logo">
+            <div class="front-tag">QO-AMBIENTAL</div>
+            <div class="line-accent"></div>
         </div>
     </div>
 
-    <p class="label" style="margin-top: 20px;">Reverso</p>
-    <div class="card">
-        <div class="card-back">
-            <div class="b-left">
-                <div class="b-qr">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://qoambiental.com/&color=0D2630&bgcolor=FFFFFF&qzone=1&format=png" alt="QR">
+    <p class="lbl">Reverso - Diseño Finalizado</p>
+    <div class="card-container">
+        <div class="back">
+            <div class="b-side">
+                <div class="b-side-qr">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://qoambiental.com/&color=0D2630&bgcolor=FFFFFF&qzone=1&ecc=H" alt="QR">
                 </div>
+                <div style="margin-top: 15px; font-size: .55rem; color: #fff; opacity: 0.6; font-weight: 800; letter-spacing: 2px;">QOAMBIENTAL.COM</div>
+                <div class="b-nit-side">NIT: 901856042-1</div>
             </div>
-            <div class="b-right">
+            
+            <div class="b-main">
                 <div class="b-name">Luisa Fernanda<br>Ortiz Triana</div>
                 <div class="b-role">Directora General</div>
-                
-                <div class="b-contact">
-                    <div class="c-row"><i class="fas fa-envelope"></i> qoambientalsas@gmail.com</div>
-                    <div class="c-row"><i class="fas fa-phone"></i> +57 311 538 9614</div>
-                    <div class="c-row"><i class="fas fa-globe"></i> www.qoambiental.com</div>
-                    <div class="c-row"><i class="fas fa-location-dot"></i> Villanueva, Casanare</div>
+
+                <div class="b-data">
+                    <div class="data-row"><i class="fas fa-envelope"></i> qoambientalsas@gmail.com</div>
+                    <div class="data-row"><i class="fas fa-phone"></i> +57 311 538 9614</div>
+                    <div class="data-row"><i class="fas fa-globe"></i> www.qoambiental.com</div>
+                    <div class="data-row"><i class="fas fa-location-dot"></i> Villanueva, Casanare - Colombia</div>
                 </div>
 
-                <div class="b-nit">NIT: 901856042-1</div>
+                <div class="b-footer-clean">
+                    ESG <span>•</span> GIS <span>•</span> CUMPLIMIENTO
+                </div>
             </div>
         </div>
     </div>

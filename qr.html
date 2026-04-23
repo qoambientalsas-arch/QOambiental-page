@@ -3,218 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR | QO Ambiental</title>
-    <link rel="icon" href="imagenes/Logo QO-recortado.png">
+    <title>Digital Asset Studio | QO-AMBIENTAL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html, body {
-            height: 100%;
-            font-family: 'Inter', sans-serif;
+        :root {
+            --teal: #00A8B5;
+            --lime: #8BC34A;
+            --dark: #0D2630;
+            --white: #FFFFFF;
+            --grad-teal: linear-gradient(135deg, #007A84 0%, #00A8B5 100%);
+            --grad-lime: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
         }
-        body {
-            background: linear-gradient(145deg, #0a1a20 0%, #0f2a1a 50%, #0a1a20 100%);
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #050a0d;
+            color: var(--white);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 30px;
+            padding: 60px 20px;
+            overflow-x: hidden;
         }
 
-        /* ══ TARJETA ══
-           Formato tipo flyer vertical, ideal para WhatsApp Status e impresión
-        */
-        .qr-card {
-            width: 380px;
-            background: linear-gradient(160deg, #0D2630 0%, #1A3A26 55%, #0D2630 100%);
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow:
-                0 0 0 1px rgba(0,168,181,.15),
-                0 24px 80px rgba(0,0,0,.5),
-                0 0 60px rgba(0,168,181,.08);
+        /* Animated Background Elements */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: 0;
+            animation: pulse 10s infinite alternate;
+        }
+        @keyframes pulse { from { transform: scale(1); opacity: 0.1; } to { transform: scale(1.2); opacity: 0.2; } }
+        .orb-1 { width: 800px; height: 800px; background: var(--teal); top: -300px; left: -200px; }
+        .orb-2 { width: 600px; height: 600px; background: var(--lime); bottom: -200px; right: -100px; }
+
+        .studio-wrap { max-width: 1200px; width: 100%; position: relative; z-index: 10; }
+        
+        .hero-title { text-align: center; margin-bottom: 80px; }
+        .hero-title h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3.8rem; letter-spacing: -2px; margin-bottom: 5px; }
+        .hero-title p { color: var(--teal); font-weight: 800; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; }
+
+        .qr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+        /* Cinematic Glass Card */
+        .asset-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 60px;
+            padding: 80px 40px 60px;
+            text-align: center;
             position: relative;
+            overflow: hidden;
+            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+        }
+        .asset-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        /* Orbes de fondo */
-        .orb { position:absolute; border-radius:50%; pointer-events:none; }
-        .o1 { width:350px;height:350px;background:radial-gradient(circle,rgba(0,168,181,.12),transparent 70%);top:-120px;right:-100px; }
-        .o2 { width:250px;height:250px;background:radial-gradient(circle,rgba(76,175,80,.1),transparent 70%);bottom:-80px;left:-80px; }
-
-        /* Franja top */
-        .stripe-top {
-            height: 5px;
-            background: linear-gradient(90deg, #4CAF50, #8BC34A 50%, #00A8B5);
+        /* Large Background Icons */
+        .bg-icon {
+            position: absolute;
+            top: 20px; right: -30px;
+            font-size: 18rem;
+            color: white;
+            opacity: 0.03;
+            pointer-events: none;
+            transform: rotate(-10deg);
         }
 
-        /* ── SECCIÓN LOGO ── */
-        .card-logo-sec {
-            padding: 32px 36px 20px;
-            display: flex;
-            align-items: center;
-            gap: 0;
+        .card-header { position: relative; z-index: 2; margin-bottom: 40px; }
+        .card-header h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; letter-spacing: 8px; opacity: 0.5; margin-bottom: 15px; }
+        .card-header h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.8rem; font-weight: 900; letter-spacing: -1.5px; line-height: 1; }
+
+        .qr-wrapper {
+            background: white;
+            padding: 35px;
+            border-radius: 45px;
+            display: inline-block;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 60px rgba(0,168,181,0.3);
         }
-        .card-logo-img {
-            height: 56px;
-            filter: brightness(0) invert(1);
+        .qr-wrapper img { width: 260px; height: 260px; border-radius: 15px; }
+        
+        /* Branded QR Center */
+        .qr-logo-hub {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 6px;
+            border-radius: 12px;
+            width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .qr-logo-hub img { width: 38px; height: 38px; object-fit: contain; }
+
+        /* Action Scan Line Animation */
+        .qr-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 35px; left: 35px; right: 35px;
+            height: 2px; background: var(--teal);
+            box-shadow: 0 0 15px var(--teal);
+            animation: scan 3s infinite ease-in-out;
+            z-index: 3;
+            opacity: 0.4;
+        }
+        @keyframes scan { 0%, 100% { top: 35px; } 50% { top: 295px; } }
+
+        .footer-call { position: relative; z-index: 2; }
+        .cta-box {
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: 100px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
         }
 
-        /* ── DIVIDER ── */
-        .div {
-            height: 1px;
-            background: rgba(255,255,255,.08);
-            margin: 0 36px;
-        }
+        .link-desc { font-size: 0.9rem; opacity: 0.4; font-weight: 700; letter-spacing: 1px; }
 
-        /* ── SECCIÓN QR CENTRAL ── */
-        .card-qr-sec {
-            padding: 28px 36px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        .qr-wrap {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 14px;
-            box-shadow:
-                0 0 0 1px rgba(0,168,181,.3),
-                0 8px 32px rgba(0,168,181,.2);
-        }
-        .qr-wrap img {
-            width: 180px;
-            height: 180px;
-            display: block;
-            border-radius: 8px;
-        }
-        .qr-label {
-            text-align: center;
-        }
-        .qr-label h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #ffffff;
-            font-size: 1.25rem;
-            font-weight: 800;
-            margin-bottom: 6px;
-            line-height: 1.3;
-        }
-        .qr-label h2 span {
-            background: linear-gradient(135deg,#8BC34A,#4CAF50);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .qr-label p {
-            color: rgba(255,255,255,.55);
-            font-size: .82rem;
-            line-height: 1.55;
-            max-width: 260px;
-            margin: 0 auto;
-        }
-
-        /* ── SECCIÓN CONTACTO ── */
-        .card-contact-sec {
-            padding: 0 36px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .c-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255,255,255,.05);
-            border: 1px solid rgba(255,255,255,.07);
-            border-radius: 10px;
-            padding: 9px 14px;
-            font-size: .82rem;
-            color: rgba(255,255,255,.8);
-        }
-        .c-row i {
-            width: 16px;
-            color: #8BC34A;
-            font-size: .85rem;
-            flex-shrink: 0;
-            text-align: center;
-        }
-
-        /* ── FOOTER ── */
-        .card-footer {
-            background: rgba(0,0,0,.3);
-            padding: 12px 36px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .cf-nit {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: .65rem;
-            font-weight: 600;
-            color: rgba(255,255,255,.3);
-        }
-        .cf-tag {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: .65rem;
-            font-weight: 700;
-            color: #8BC34A;
-            letter-spacing: .5px;
-        }
-
-        /* ── PRINT ── */
-        @media print {
-            * { -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important; }
-            body { background:white; padding:0; align-items:flex-start; }
-            .qr-card { box-shadow:none; border:1px solid #ddd; }
-            @page { size:10cm 15cm; margin:5mm; }
+        @media (max-width: 900px) {
+            .qr-grid { grid-template-columns: 1fr; }
+            .hero-title h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="qr-card">
-        <div class="orb o1"></div>
-        <div class="orb o2"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
 
-        <!-- Stripe -->
-        <div class="stripe-top"></div>
-
-        <!-- Logo -->
-        <div class="card-logo-sec">
-            <img src="imagenes/Logo QO.png" alt="QO Ambiental" class="card-logo-img">
+    <div class="studio-wrap">
+        <div class="hero-title">
+            <img src="imagenes/Logo QO.png" style="height: 100px; filter: brightness(0) invert(1); margin-bottom: 25px;">
+            <h1>ASSET FACTORY</h1>
+            <p>QO-AMBIENTAL Digital Studio</p>
         </div>
 
-        <div class="div"></div>
+        <div class="qr-grid">
+            <!-- ASSET 1: SITIO WEB -->
+            <div class="asset-card">
+                <div class="bg-icon"><i class="fas fa-globe-americas"></i></div>
+                <div class="card-header">
+                    <h3>QO-AMBIENTAL</h3>
+                    <h2>SITIO WEB<br><span style="color:var(--teal)">OFICIAL</span></h2>
+                </div>
+                
+                <div class="qr-wrapper" style="box-shadow: 0 25px 50px rgba(0,168,181,0.25);">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://qoambiental.com/&color=00A8B5&bgcolor=FFFFFF&qzone=2&ecc=H" alt="Web QR">
+                    <div class="qr-logo-hub">
+                        <img src="imagenes/Logo QO-recortado.png" alt="">
+                    </div>
+                </div>
 
-        <!-- QR Central -->
-        <div class="card-qr-sec">
-            <div class="qr-wrap">
-                <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://qoambiental.com/&color=00A8B5&bgcolor=FFFFFF&qzone=2&format=png"
-                    alt="QR QO Ambiental — qoambiental.com"
-                >
+                <div class="footer-call">
+                    <div class="cta-box" style="background: var(--teal); color: white;">ESCANEA PARA EXPLORAR</div>
+                    <br>
+                    <p class="link-desc">WWW.QOAMBIENTAL.COM</p>
+                </div>
             </div>
-            <div class="qr-label">
-                <h2>Escaneá y<br><span>contáctanos</span></h2>
-                <p>Apunta tu cámara al código QR para escribirnos directamente.</p>
+
+            <!-- ASSET 2: BROCHURE -->
+            <div class="asset-card">
+                <div class="bg-icon"><i class="fas fa-file-invoice"></i></div>
+                <div class="card-header">
+                    <h3>QO-AMBIENTAL</h3>
+                    <h2>BROCHURE<br><span style="color:var(--lime)">TÉCNICO</span></h2>
+                </div>
+                
+                <div class="qr-wrapper" style="box-shadow: 0 25px 50px rgba(76,175,80,0.25); --teal: var(--lime);">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://qoambiental.com/Brochure%20Corporativo%20_%20QO%20Ambiental-1.pdf&color=2E7D32&bgcolor=FFFFFF&qzone=2&ecc=H" alt="PDF QR">
+                    <div class="qr-logo-hub">
+                        <img src="imagenes/Logo QO-recortado.png" alt="">
+                    </div>
+                </div>
+
+                <div class="footer-call">
+                    <div class="cta-box" style="background: var(--lime); color: var(--dark);">ESCANEA PARA DESCARGAR</div>
+                    <br>
+                    <p class="link-desc">PORTAFOLIO INTEGRAL 2026</p>
+                </div>
             </div>
         </div>
 
-        <!-- Contacto -->
-        <div class="card-contact-sec">
-            <div class="c-row"><i class="fas fa-globe"></i> qoambiental.com</div>
-            <div class="c-row"><i class="fas fa-envelope"></i> qoambientalsas@gmail.com</div>
-            <div class="c-row"><i class="fas fa-phone"></i> +57 311 538 9614</div>
-            <div class="c-row"><i class="fas fa-map-marker-alt"></i> Villanueva, Casanare — Colombia</div>
-        </div>
-
-        <!-- Footer -->
-        <div class="card-footer">
-            <span class="cf-nit">NIT: 901856042-1</span>
-            <span class="cf-tag">🌿 Ambiental · Social · Sostenible</span>
+        <div style="text-align: center; margin-top: 80px; opacity: 0.15;">
+            <p style="font-weight: 800; font-size: 0.8rem; letter-spacing: 5px;">QO-AMBIENTAL S.A.S</p>
         </div>
     </div>
 

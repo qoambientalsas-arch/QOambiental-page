@@ -110,25 +110,25 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 800; line-height
 }
 
 /* ══ Sections ══ */
-.section { padding: 100px 0; }
+.section { padding: 50px 0; }
 .section-tag { 
     display: inline-block; color: var(--teal); font-weight: 800; text-transform: uppercase;
-    letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 15px;
+    letter-spacing: 3px; font-size: 0.75rem; margin-bottom: 10px;
 }
-.section-title { font-size: 3rem; margin-bottom: 40px; letter-spacing: -1.5px; }
+.section-title { font-size: 2.8rem; margin-bottom: 25px; letter-spacing: -1.5px; }
 .section-title span { color: var(--teal); }
 
 /* ══ Cards ══ */
 .glass-card {
-    background: var(--bg-card); border-radius: var(--radius-lg); padding: 45px;
+    background: var(--bg-card); border-radius: var(--radius-lg); padding: 30px;
     box-shadow: var(--shadow-premium); border: 1px solid var(--border);
     transition: var(--transition);
 }
 
 /* ══ Grid ══ */
-.g-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-.g-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-.g-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.g-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+.g-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.g-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
 
 /* ══ UI Elements ══ */
 .btn { 

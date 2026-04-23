@@ -95,24 +95,38 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerText = 'Enviando...';
             btn.disabled = true;
 
-            const params = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value
-            };
+            try {
+                const nameEl = document.getElementById('name');
+                const emailEl = document.getElementById('email');
+                const messageEl = document.getElementById('message');
+                const serviceEl = document.getElementById('service');
 
-            emailjs.send('service_yz77x7l', 'template_32qb98k', params)
-                .then(() => {
-                    btn.innerText = '¡Enviado!';
-                    form.reset();
-                    setTimeout(() => { btn.innerText = originalText; btn.disabled = false; }, 3000);
-                }, (err) => {
-                    console.error(err);
-                    alert('Error al enviar. Intente de nuevo.');
-                    btn.innerText = originalText; btn.disabled = false;
-                });
+                const params = {
+                    from_name: nameEl ? nameEl.value : 'Prospecto Web',
+                    reply_to: emailEl ? emailEl.value : '',
+                    phone_number: document.getElementById('phone') ? document.getElementById('phone').value : 'No proporcionado',
+                    selected_service: serviceEl ? serviceEl.value : 'No especificado',
+                    message_html: messageEl ? messageEl.value : ''
+                };
+
+                // Using IDs provided: service_yz77x7l, template_32qb98k
+                emailjs.send('service_yz77x7l', 'template_32qb98k', params)
+                    .then(() => {
+                        btn.innerText = '¡Enviado!';
+                        form.reset();
+                        setTimeout(() => { btn.innerText = originalText; btn.disabled = false; }, 3000);
+                    })
+                    .catch((err) => {
+                        console.error('EmailJS Error:', err);
+                        alert('Error al enviar. Intente de nuevo.');
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    });
+            } catch (err) {
+                console.error('Submit Error:', err);
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
         });
     }
 });
