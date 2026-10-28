@@ -87,7 +87,7 @@ h1 span {
 
 /* --- Page 1: Cover --- */
 .cover-page {
-    background: url('../assets/gallery/imagen1.jpg') center/cover;
+    background: url('../assets/media/imagen1.jpg') center/cover;
     color: white;
     justify-content: center;
     padding: 50px;
@@ -155,7 +155,7 @@ h1 span {
 /* --- Interior Pages (2 & 3) --- */
 .text-page {
     padding: 60px;
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url('../assets/gallery/imagen 2.jpg') center/cover;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url('../assets/media/imagen 2.jpg') center/cover;
 }
 
 .page-header {
@@ -232,7 +232,7 @@ h1 span {
 
 /* --- Dark Page (3) --- */
 .dark-page {
-    background: linear-gradient(rgba(26, 41, 44, 0.9), rgba(26, 41, 44, 0.95)), url('../assets/gallery/imagen 3.jpg') center/cover;
+    background: linear-gradient(rgba(26, 41, 44, 0.9), rgba(26, 41, 44, 0.95)), url('../assets/media/imagen 3.jpg') center/cover;
     color: white;
 }
 
@@ -319,7 +319,7 @@ h1 span {
 
 /* --- Page 4: Back Cover --- */
 .back-cover {
-    background: linear-gradient(rgba(0, 168, 181, 0.85), rgba(0, 168, 181, 0.95)), url('../assets/gallery/imagen4.jpg') center/cover;
+    background: linear-gradient(rgba(0, 168, 181, 0.85), rgba(0, 168, 181, 0.95)), url('../assets/media/imagen4.jpg') center/cover;
     color: white;
     padding: 60px;
     justify-content: center;
@@ -579,7 +579,7 @@ h1 span {
 
 /* --- QR Page (Page 4) --- */
 .qr-page {
-    background: linear-gradient(135deg, rgba(0, 168, 181, 0.95) 0%, rgba(76, 175, 80, 0.95) 100%), url('../assets/gallery/imagen1.jpg') center/cover;
+    background: linear-gradient(135deg, rgba(0, 168, 181, 0.95) 0%, rgba(76, 175, 80, 0.95) 100%), url('../assets/media/imagen1.jpg') center/cover;
     color: white;
     padding: 60px;
     display: flex;

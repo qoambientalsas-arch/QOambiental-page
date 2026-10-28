@@ -53,7 +53,7 @@ body {
 
 /* --- Frente de la Tarjeta --- */
 .card-front {
-    background: url('../assets/gallery/imagen1.jpg') center/cover no-repeat;
+    background: url('../assets/media/imagen1.jpg') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -204,10 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // HERO BACKGROUND SLIDESHOW
     // ══════════════════════════════════════════
     const heroBgs = [
-        "assets/gallery/PHOTO-2026-10-14-15-35-20_6.jpg",
-        "assets/gallery/PHOTO-2026-10-14-15-35-20_3.jpg",
-        "assets/gallery/PHOTO-2026-10-14-15-35-20.jpg",
-        "assets/gallery/PHOTO-2026-10-14-15-35-19_1.jpg",
+        "assets/media/PHOTO-2026-10-14-15-35-20_6.jpg",
+        "assets/media/PHOTO-2026-10-14-15-35-20_3.jpg",
+        "assets/media/PHOTO-2026-10-14-15-35-20.jpg",
+        "assets/media/PHOTO-2026-10-14-15-35-19_1.jpg",
     ];
     let heroBgIndex = 0;
     const heroBgEl = document.getElementById('hero-bg');
