@@ -1,0 +1,63 @@
+<div
+    style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; background-color: #F4F7F6; color: #2D3748; padding: 40px 20px;">
+    <div
+        style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 40px; border-radius: 12px; border-top: 6px solid #00A8B5; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+
+        <!-- Encabezado -->
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="color: #00A8B5; margin: 0; font-size: 24px;">¡Nuevo Mensaje de Contacto! 🌱</h2>
+            <p style="color: #718096; margin-top: 8px; font-size: 15px;">Alguien ha llenado el formulario en la página
+                web de QO Ambiental.</p>
+        </div>
+
+        <!-- Detalles del Remitente -->
+        <div
+            style="background-color: #F8FAFC; padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #4CAF50;">
+            <h3 style="margin-top: 0; color: #1A292C; font-size: 18px; margin-bottom: 15px;">Datos del Cliente:</h3>
+
+            <p style="margin: 8px 0;"><strong>Nombre:</strong> {{name}}</p>
+
+            <p style="margin: 8px 0;">
+                <strong>Correo Electrónico:</strong>
+                <a href="mailto:{{email}}" style="color: #00A8B5; text-decoration: none;">{{email}}</a>
+            </p>
+
+            <p style="margin: 8px 0;"><strong>Celular/Teléfono:</strong> {{phone}}</p>
+
+            <p style="margin: 8px 0;">
+                <strong>Servicio de Interés:</strong>
+                <span
+                    style="background-color: #e6f6f7; color: #008791; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 14px;">
+                    {{service}}
+                </span>
+            </p>
+        </div>
+
+        <!-- Cuerpo del Mensaje -->
+        <div style="margin-bottom: 35px;">
+            <h3 style="color: #1A292C; border-bottom: 2px solid #E2E8F0; padding-bottom: 10px; font-size: 18px;">Mensaje
+                enviado:</h3>
+            <div
+                style="background-color: #ffffff; padding: 20px; border: 1px solid #E2E8F0; border-radius: 8px; font-style: italic; color: #4A5568; line-height: 1.6; white-space: pre-wrap;">
+                {{message}}</div>
+        </div>
+
+        <!-- Botón de Acción -->
+        <div style="text-align: center; margin-top: 35px;">
+            <a href="mailto:{{email}}?subject=Respuesta%20a%20tu%20consulta%20-%20QO%20Ambiental"
+                style="display: inline-block; background-color: #00A8B5; color: #ffffff; text-decoration: none; padding: 14px 30px; border-radius: 50px; font-weight: bold; transition: background-color 0.3s;">
+                Responder al Cliente
+            </a>
+        </div>
+
+        <!-- Pie de página -->
+        <hr style="border: none; border-top: 1px solid #E2E8F0; margin: 40px 0 20px;">
+
+        <p style="text-align: center; font-size: 13px; color: #A0AEC0; margin: 0; line-height: 1.5;">
+            Este es un correo automático generado por el formulario de <strong>QO Ambiental</strong>.<br>
+            Por favor, no respondas directamente a este remitente automático. Usa el botón de arriba para escribirle al
+            cliente.
+        </p>
+
+    </div>
+</div>
